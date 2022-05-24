@@ -12,39 +12,32 @@ export default function DetailScreen({ route, navigation }) {
   const [origin, setOrigin] = useState();
   const [isLoading, setIsLoading] = useState(true);
   useEffect(async () => {
-    let isMounted = true;
     try {
-      var resNames = await loadNames();
-    } catch (error) {
+      let isMounted = true;
+      let [resNames, resLocations, resOrigins] = await Promise.all([loadNames(), loadLocations(), loadOrigins()]);
+      if (isMounted) {
+        setListEpisodeName(resNames)
+        setLocation(resLocations);
+        setOrigin(resOrigins);
+        setIsLoading(false);
+      }
 
-    }
-    try {
-      var resLocations = await loadLocations();
+      return () => { isMounted = false };
     } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+    }
 
-    }
-    try {
-      var resOrigins = await loadOrigins();
-    } catch (error) {
-
-    }
-    if (isMounted) {
-      setListEpisodeName(resNames)
-      setLocation(resLocations);
-      setOrigin(resOrigins);
-    }
-    setIsLoading(false);
-    return () => { isMounted = false };
   }, []);
 
   async function loadNames() {
+    console.log("loadName called")
     let tmpList = []
     await Promise.all(item.episode.map(async (elem) => {
       try {
-        // here candidate data is inserted into  
         let res = await getItemFromUrl(elem);
-        // and response need to be added into final response array 
-        tmpList.push(res.name)
+        if (res != null)
+          tmpList.push(res.name)
       } catch (error) {
         console.log('error' + error);
       }
@@ -53,6 +46,7 @@ export default function DetailScreen({ route, navigation }) {
     return tmpList;
   }
   async function loadLocations() {
+    console.log("load location called")
     if (item.location.url == "") return null;
     return await getItemFromUrl(item.location.url);
   }
