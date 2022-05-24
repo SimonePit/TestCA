@@ -8,7 +8,7 @@
    ```
 
 3. Download this repo
-4. Install deps on your template folder
+4. Install deps
 
    ```jsx
    npm install
