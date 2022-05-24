@@ -1,11 +1,3 @@
-# Template Blank with navigation
-
-Template starter with React Navigation
-
-# Preview
-
-![../media/withnav.gif](../media/withnav.gif)
-
 # Installation
 
 1. Install [node.js](https://nodejs.org/en/)
@@ -28,25 +20,7 @@ Template starter with React Navigation
    expo start
    ```
 
-## Rapi UI
+## Native base
+These UI components are provided by [Native base](https://nativebase.io/).
+Check the [documentation](https://docs.nativebase.io/?utm_source=HomePage&utm_medium=header&utm_campaign=NativeBase_3) for usage and more components.
 
-![../media/hero.png](../media/hero.png)
-
-These UI components are provided by [Rapi UI](https://rapi-ui.kikiding.space/).
-Check the [documentation](https://rapi-ui.kikiding.space/docs/) for usage and more components.
-
-# File Managements
-
-These are the folders and the functionality
-
-```jsx
-/src/assets -> for media such as images, etc
-/src/components -> for components
-/src/navigation -> for React Navigation
-/src/provider -> for React Context
-/src/screens -> for Screens
-```
-
-if you find these useful don't forget to give it a star ⭐ and share it to your friends ❤️
-
-Reach me on [twitter](https://twitter.com/kikiding/)
